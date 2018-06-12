@@ -61,22 +61,20 @@ public class InsSorting {
         for (int i=1;i<mid.length; i++){//默认第一个位置一排序，从第二个数开始
             temp = mid[i];
 //            此循环自己想的，太耗时
-//            for (j=i; j>0 ; j--){//从当前位置，递减比较已排序的部分
-//                if (temp < mid[j-1]){//如果这样判断的话，当temp比0位置的数还小时，会出现不插入当前值，直接for循环结束，需要加入if判断
-//                    mid[j] = mid[j-1];
-//                    if (j-1 == 0) //避免不插入到0位置，加入判断。耗时增加，此算法不适用
-//                        mid[j-1] = temp;
-//                }else {
-//                    mid[j-1] = temp;
-//                    break;
-//                }
-//            }
+            for (j=i; j>0 ; j--){//从当前位置，递减比较已排序的部分
+                if (temp < mid[j-1]){//如果这样判断的话，当temp比0位置的数还小时，会出现不插入当前值，直接for循环结束，需要加入if判断
+                    mid[j] = mid[j-1];
+                }else {
+                    break;
+                }
+            }
+            mid[j] = temp;
 //
 //            查找资料优化而来
-            for (j=i; j>0 && temp < mid[j-1]; j--){//从当前位置，递减比较已排序的部
-                    mid[j] = mid[j-1];
-                }
-            mid[j] = temp;
+//            for (j=i; j>0 && temp < mid[j-1]; j--){//从当前位置，递减比较已排序的部
+//                    mid[j] = mid[j-1];
+//                }
+//            mid[j] = temp;
 
 
         }
